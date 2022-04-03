@@ -1,6 +1,6 @@
 # Code and data for "Drug addiction mutations unveil a methylation ceiling in EZH2-mutant lymphoma"
 
-Hui Si Kwok(1), Allyson M. Freedy(1) Allison P. Siegenfeld, Julia M. Morris, Amanda L. Waterbury, Stephen M. Kissler, Brian B. Liau
+__Hui Si Kwok(1), Allyson M. Freedy(1) Allison P. Siegenfeld, Julia M. Morris, Amanda L. Waterbury, Stephen M. Kissler, Brian B. Liau__
 
 (1) These authors contributed equally
 
