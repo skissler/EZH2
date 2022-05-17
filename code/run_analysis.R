@@ -403,6 +403,28 @@ ggsave(fig_GSK_scatter_avg,file="figures/GSK_scatter_avg.png", width=2.5, height
 ggsave(fig_GSK_scatter_avg,file="figures/GSK_scatter_avg_rect.pdf", width=4, height=2.5)
 ggsave(fig_GSK_scatter_avg,file="figures/GSK_scatter_avg_rect.png", width=4, height=2.5)
 
+fig_GSK_scatter_avg_flipped <- ggplot() + 
+	geom_vline(aes(xintercept=0), size=0.2, lty="dashed") + 
+	geom_hline(aes(yintercept=bigpropcutoff), size=0.2, lty="dashed") + 
+	geom_point(data=rdiffpropdf_GSK_avg, aes(x=-rdiff,y=prop), size=0.5, col="lightgray") + 
+	geom_point(data=filter(rdiffpropdf_GSK_avg,rdiff<0 & prop>bigpropcutoff), aes(x=-rdiff,y=prop), size=1, col="red") + 
+	geom_point(data=filter(rdiffpropdf_GSK_avg,rdiff>=0 & sgRNA_ID!=special_guide_GSK & prop>bigpropcutoff), aes(x=-rdiff,y=prop), size=1, col="blue") + 
+	geom_point(data=filter(rdiffpropdf_GSK_avg, sgRNA_ID==special_guide_GSK), aes(x=-rdiff,y=prop), size=1, col="black") + 
+	geom_text_repel(data=filter(rdiffpropdf_GSK_avg,rdiff<0 & prop>bigpropcutoff), aes(x=-rdiff,y=prop, label=lab), size=2, col="red", min.segment.length=0.1, segment.size=0.3, box.padding=0.2) + 
+	geom_text_repel(data=filter(rdiffpropdf_GSK_avg,rdiff>=0 & sgRNA_ID!=special_guide_GSK & prop>bigpropcutoff), aes(x=-rdiff,y=prop, label=lab), size=2, col="blue", min.segment.length=0.1, segment.size=0.3, box.padding=0.2, alpha=0.5) + 
+	geom_text_repel(data=filter(rdiffpropdf_GSK_avg,sgRNA_ID==special_guide_GSK), aes(x=-rdiff,y=prop, label=lab), size=2, col="black", min.segment.length=0.1, segment.size=0.3, box.padding=0.2, alpha=0.5) + 
+	theme_classic() + 
+	theme(text=element_text(size=10)) + 
+	scale_y_continuous(breaks=seq(from=0,to=1,by=0.05), limits=c(0,0.3), expand=c(0.000,0.0001)) + 
+	scale_x_continuous(breaks=seq(from=-10,to=10,by=5), limits=c(-10,10), expand=c(0.000,0.0001)) + 
+	labs(title="GSK",x="Addiction score", y="Proportion of pool upon drug removal")
+
+ggsave(fig_GSK_scatter_avg_flipped,file="figures/GSK_scatter_avg_flipped.pdf", width=2.5, height=2.5)
+ggsave(fig_GSK_scatter_avg_flipped,file="figures/GSK_scatter_avg_flipped.png", width=2.5, height=2.5)
+
+ggsave(fig_GSK_scatter_avg_flipped,file="figures/GSK_scatter_avg_rect_flipped.pdf", width=4, height=2.5)
+ggsave(fig_GSK_scatter_avg_flipped,file="figures/GSK_scatter_avg_rect_flipped.png", width=4, height=2.5)
+
 fig_GSK_scatter_avg_laterdiff <- ggplot() + 
 	geom_hline(aes(yintercept=0), size=0.2, lty="dashed") + 
 	geom_vline(aes(xintercept=bigpropcutoff), size=0.2, lty="dashed") + 
@@ -482,6 +504,30 @@ ggsave(fig_EED_scatter_avg,file="figures/EED_scatter_avg.png", width=2.5, height
 
 ggsave(fig_EED_scatter_avg,file="figures/EED_scatter_avg_rect.pdf", width=4, height=2.5)
 ggsave(fig_EED_scatter_avg,file="figures/EED_scatter_avg_rect.png", width=4, height=2.5)
+
+
+fig_EED_scatter_avg_flipped <- ggplot() + 
+	geom_vline(aes(xintercept=0), size=0.2, lty="dashed") + 
+	geom_hline(aes(yintercept=bigpropcutoff), size=0.2, lty="dashed") + 
+	geom_point(data=rdiffpropdf_EED_avg, aes(x=-rdiff,y=prop), size=0.5, col="lightgray") + 
+	geom_point(data=filter(rdiffpropdf_EED_avg,rdiff<0 & prop>bigpropcutoff), aes(x=-rdiff,y=prop), size=1, col="red") + 
+	geom_point(data=filter(rdiffpropdf_EED_avg,rdiff>=0 & sgRNA_ID!=special_guide_EED & prop>bigpropcutoff), aes(x=-rdiff,y=prop), size=1, col="blue") + 
+	geom_point(data=filter(rdiffpropdf_EED_avg, sgRNA_ID==special_guide_EED), aes(x=-rdiff,y=prop), size=1, col="black") + 
+	geom_text_repel(data=filter(rdiffpropdf_EED_avg,rdiff<0 & prop>bigpropcutoff), aes(x=-rdiff,y=prop, label=lab), size=2, col="red", min.segment.length=0.1, segment.size=0.3, box.padding=0.2) + 
+	geom_text_repel(data=filter(rdiffpropdf_EED_avg,rdiff>=0 & sgRNA_ID!=special_guide_EED & prop>bigpropcutoff), aes(x=-rdiff,y=prop, label=lab), size=2, col="blue", min.segment.length=0.1, segment.size=0.3, box.padding=0.2, alpha=0.5) + 
+	geom_text_repel(data=filter(rdiffpropdf_EED_avg,sgRNA_ID==special_guide_EED), aes(x=-rdiff,y=prop, label=lab), size=2, col="black", min.segment.length=0.1, segment.size=0.3, box.padding=0.2, alpha=0.5) + 
+	theme_classic() + 
+	theme(text=element_text(size=10)) + 
+	scale_y_continuous(breaks=seq(from=0,to=1,by=0.05), limits=c(0,0.3), expand=c(0.000,0.0001)) + 
+	scale_x_continuous(breaks=seq(from=-10,to=10,by=5), limits=c(-10,10), expand=c(0.000,0.0001)) + 
+	labs(title="EED",x="Addiction score", y="Proportion of pool upon drug removal")
+
+ggsave(fig_EED_scatter_avg_flipped,file="figures/EED_scatter_avg_flipped.pdf", width=2.5, height=2.5)
+ggsave(fig_EED_scatter_avg_flipped,file="figures/EED_scatter_avg_flipped.png", width=2.5, height=2.5)
+
+ggsave(fig_EED_scatter_avg_flipped,file="figures/EED_scatter_avg_rect_flipped.pdf", width=4, height=2.5)
+ggsave(fig_EED_scatter_avg_flipped,file="figures/EED_scatter_avg_rect_flipped.png", width=4, height=2.5)
+
 
 
 fig_EED_scatter_avg_laterdiff <- ggplot() + 
